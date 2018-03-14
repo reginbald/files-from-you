@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-list disableRipple="true">
+    <mat-list-item *ngFor="let transfer of transfers">
+      <mat-icon mat-list-icon>timeline</mat-icon>
+      <h4 mat-line>{{transfer.name}}</h4>
+      <p mat-line> {{transfer.date | date}} </p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
