@@ -59,7 +59,7 @@ app.post('/api/clients', function(req, res) {
     handleError(res, 'Invalid user input', 'Name field is required.', 400);
   }
 
-  db.collection(CLIENTS_COLLECTION).insertOne(newContact, function(err, doc) {
+  db.collection(CLIENTS_COLLECTION).insertOne(newClient, function(err, doc) {
     if (err) {
       handleError(res, err.message, 'Failed to create new client.');
     } else {
