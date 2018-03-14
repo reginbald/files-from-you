@@ -12,6 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "preinstall": "cd server-app && npm install",
     "test": "cd server-app && ng test",
     "start": "node server.js",
     "ng": "cd server-app && ng",
@@ -24,11 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/reginbald/files-from-you.git"
   },
-  "keywords": [
-    "Node",
-    "REST",
-    "server"
-  ],
+  "keywords": ["Node", "REST", "server"],
   "author": "Jon Reginbald Ivarsson",
   "license": "MIT",
   "bugs": {
