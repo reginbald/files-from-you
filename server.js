@@ -4,6 +4,7 @@ var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
 
 var CLIENTS_COLLECTION = 'clients';
+var TRANSFER_COLLECTION = 'transfers';
 
 var app = express();
 app.use(bodyParser.json());
@@ -124,6 +125,46 @@ app.delete('/api/clients/:id', function(req, res) {
       handleError(res, err.message, 'Failed to delete client');
     } else {
       res.status(200).json(req.params.id);
+    }
+  });
+});
+
+/* "/api/transfers"
+ * GET: finds all transfers
+ * POST: creates a new transfer
+ */
+app.get('/api/transfers', function(req, res) {
+  db
+    .collection(TRANSFER_COLLECTION)
+    .find({})
+    .toArray(function(err, docs) {
+      if (err) {
+        handleError(res, err.message, 'Failed to get transfers.');
+      } else {
+        res.status(200).json(docs);
+      }
+    });
+});
+app.post('/api/transfers', function(req, res) {
+  var newTransfer = req.body;
+
+  if (!req.body.fileName) {
+    handleError(res, 'Invalid user input', '"fileName" is required.', 400);
+  }
+
+  if (!req.body.clientIds) {
+    handleError(res, 'Invalid user input', '"client" ids is required.', 400);
+  }
+
+  if (!req.body.usage) {
+    handleError(res, 'Invalid user input', '"usage" is required.', 400);
+  }
+
+  db.collection(CLIENTS_COLLECTION).insertOne(newTransfer, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, 'Failed to create new transfer.');
+    } else {
+      res.status(201).json(doc.ops[0]);
     }
   });
 });
