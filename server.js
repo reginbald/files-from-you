@@ -168,3 +168,16 @@ app.post('/api/transfers', function(req, res) {
     }
   });
 });
+
+/* "/api/transfers/:id"
+ * DELETE: deletes transfer by id
+ */
+app.delete('/api/transfers/:id', function(req, res) {
+  db.collection(TRANSFER_COLLECTION).deleteOne({ _id: new ObjectID(req.params.id) }, function(err, result) {
+    if (err) {
+      errorHandler(res, err.message, 'Failed to delete transfer');
+    } else {
+      res.status(200).json(req.params.id);
+    }
+  });
+});
