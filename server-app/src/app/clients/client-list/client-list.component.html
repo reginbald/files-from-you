@@ -1,0 +1,12 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let client of clients">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{client.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{client.email}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Details</p>
+  </mat-expansion-panel>

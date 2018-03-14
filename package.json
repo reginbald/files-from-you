@@ -4,20 +4,31 @@
   "description": "FilesFromYou Programming Assignment",
   "main": "server.js",
   "dependencies": {
+    "@angular/cli": "^1.7.3",
+    "@angular/compiler-cli": "^5.2.8",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongodb": "^3.0.4"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "cd server-app && ng test",
+    "start": "node server.js",
+    "ng": "cd server-app && ng",
+    "build": "cd server-app && ng build",
+    "lint": "cd server-app && ng lint",
+    "e2e": "cd server-app && ng e2e",
+    "postinstall": "cd server-app && ng build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reginbald/files-from-you.git"
   },
-  "keywords": ["Node", "REST", "server"],
+  "keywords": [
+    "Node",
+    "REST",
+    "server"
+  ],
   "author": "Jon Reginbald Ivarsson",
   "license": "MIT",
   "bugs": {
