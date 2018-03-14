@@ -70,7 +70,7 @@ app.get('/api/clients', function(req, res) {
     .find({})
     .toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, 'Failed to get clients.');
+        errorHandler(res, err.message, 'Failed to get clients.');
       } else {
         res.status(200).json(docs);
       }
@@ -80,12 +80,12 @@ app.post('/api/clients', function(req, res) {
   var newClient = req.body;
 
   if (!req.body.name) {
-    handleError(res, 'Invalid user input', 'Name field is required.', 400);
+    errorHandler(res, 'Invalid user input', 'Name field is required.', 400);
   }
 
   db.collection(CLIENTS_COLLECTION).insertOne(newClient, function(err, doc) {
     if (err) {
-      handleError(res, err.message, 'Failed to create new client.');
+      errorHandler(res, err.message, 'Failed to create new client.');
     } else {
       res.status(201).json(doc.ops[0]);
     }
@@ -100,7 +100,7 @@ app.post('/api/clients', function(req, res) {
 app.get('/api/clients/:id', function(req, res) {
   db.collection(CLIENTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
     if (err) {
-      handleError(res, err.message, 'Failed to get client');
+      errorHandler(res, err.message, 'Failed to get client');
     } else {
       res.status(200).json(doc);
     }
@@ -112,7 +112,7 @@ app.put('/api/clients/:id', function(req, res) {
 
   db.collection(CLIENTS_COLLECTION).updateOne({ _id: new ObjectID(req.params.id) }, updateDoc, function(err, doc) {
     if (err) {
-      handleError(res, err.message, 'Failed to update client');
+      errorHandler(res, err.message, 'Failed to update client');
     } else {
       updateDoc._id = req.params.id;
       res.status(200).json(updateDoc);
@@ -122,7 +122,7 @@ app.put('/api/clients/:id', function(req, res) {
 app.delete('/api/clients/:id', function(req, res) {
   db.collection(CLIENTS_COLLECTION).deleteOne({ _id: new ObjectID(req.params.id) }, function(err, result) {
     if (err) {
-      handleError(res, err.message, 'Failed to delete client');
+      errorHandler(res, err.message, 'Failed to delete client');
     } else {
       res.status(200).json(req.params.id);
     }
@@ -139,7 +139,7 @@ app.get('/api/transfers', function(req, res) {
     .find({})
     .toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, 'Failed to get transfers.');
+        errorHandler(res, err.message, 'Failed to get transfers.');
       } else {
         res.status(200).json(docs);
       }
@@ -149,20 +149,20 @@ app.post('/api/transfers', function(req, res) {
   var newTransfer = req.body;
 
   if (!req.body.fileName) {
-    handleError(res, 'Invalid user input', '"fileName" is required.', 400);
+    errorHandler(res, 'Invalid user input', '"fileName" is required.', 400);
   }
 
   if (!req.body.clientIds) {
-    handleError(res, 'Invalid user input', '"client" ids is required.', 400);
+    errorHandler(res, 'Invalid user input', '"client" ids is required.', 400);
   }
 
   if (!req.body.usage) {
-    handleError(res, 'Invalid user input', '"usage" is required.', 400);
+    errorHandler(res, 'Invalid user input', '"usage" is required.', 400);
   }
 
-  db.collection(CLIENTS_COLLECTION).insertOne(newTransfer, function(err, doc) {
+  db.collection(TRANSFER_COLLECTION).insertOne(newTransfer, function(err, doc) {
     if (err) {
-      handleError(res, err.message, 'Failed to create new transfer.');
+      errorHandler(res, err.message, 'Failed to create new transfer.');
     } else {
       res.status(201).json(doc.ops[0]);
     }
