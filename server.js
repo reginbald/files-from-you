@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 });
 
 // Create link to Angular build directory
-var distDir = __dirname + 'server-app/dist/';
+var distDir = __dirname + 'dist/';
 app.use(express.static(distDir));
 
 // Database variable to reuse the connection pool.
