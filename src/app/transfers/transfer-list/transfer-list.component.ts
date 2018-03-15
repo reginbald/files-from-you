@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TransferService } from './../transfer.service';
+import { Transfer } from './../transfer';
 
 @Component({
   selector: 'app-transfer-list',
@@ -6,20 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transfer-list.component.css'],
 })
 export class TransferListComponent implements OnInit {
-  transfers = [
-    {
-      name: 'transfer 1',
-      date: new Date('1/1/16'),
-    },
-    {
-      name: 'transfer 2',
-      date: new Date('1/17/16'),
-    },
-    {
-      name: 'transfer 3',
-      date: new Date('1/28/16'),
-    },
-  ];
+  @Input() transfers: Transfer[];
 
   constructor() {}
 
