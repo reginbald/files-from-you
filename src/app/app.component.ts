@@ -10,7 +10,7 @@ import { Transfer } from './transfers/transfer';
 })
 export class AppComponent {
   title = 'FilesFromYou Analytics';
-  transfers: Transfer[];
+  transfers: Transfer[] = [];
   selectedTransfer: Transfer;
   loading: boolean = true;
 

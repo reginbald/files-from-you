@@ -8,7 +8,7 @@ import { Transfer } from './../transfer';
   styleUrls: ['./transfer-list.component.css'],
 })
 export class TransferListComponent implements OnInit {
-  @Input() transfers: Transfer[];
+  @Input() transfers: Transfer[] = [];
   @Output() onSelect = new EventEmitter<Transfer>();
   selected: Transfer;
 

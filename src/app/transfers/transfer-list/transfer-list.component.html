@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-list>
+  <mat-list *ngIf="transfers.length !== 0">
     <mat-list-item *ngFor="let transfer of transfers" (click)="select(transfer)">
       <mat-icon mat-list-icon>timeline</mat-icon>
       <h4 mat-line>{{transfer.fileName}}</h4>
@@ -7,4 +7,5 @@
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
+  <mat-progress-spinner *ngIf="transfers.length === 0" mode="indeterminate" style="margin-left: auto; margin-right: auto;"></mat-progress-spinner>
 </mat-card>
