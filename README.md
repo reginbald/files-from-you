@@ -4,17 +4,17 @@ This repository contains code for an Electron client application under the direc
 
 The Angular web application is accessible using the following url: https://hive-files-from-you.herokuapp.com/
 
-![client](/Users/reginbald/Projects/jobhunt/files-from-you/imgs/client-app.png)
+![client](/imgs/client-app.png)
 
 The client application simulates file transfer to another client and reports measurements to the Node express server.
 
-![web-app](/Users/reginbald/Projects/jobhunt/files-from-you/imgs/web-app.png)
+![web-app](/imgs/web-app.png)
 
 The web application lists all transfers and visualizes the cpu usage for each client involved in a file transfer.
 
 ## System Architecture
 
-![system](/Users/reginbald/Projects/jobhunt/files-from-you/imgs/system.png)
+![system](/imgs/system.png)
 
 ## Prerequisites
 
