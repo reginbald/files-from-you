@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { ChartModule } from 'angular2-chartjs';
 
@@ -33,6 +34,7 @@ import { TransferDetailsComponent } from './transfers/transfer-details/transfer-
     MatIconModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
     ChartModule,
   ],
   providers: [],

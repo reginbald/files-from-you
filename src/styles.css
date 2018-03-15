@@ -3,4 +3,9 @@
 
 body {
   background-color: #efeeee;
+  margin: 0;
+}
+
+mat-card {
+  margin: 10px;
 }

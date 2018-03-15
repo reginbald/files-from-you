@@ -1,2 +1,5 @@
+<mat-toolbar color="primary">
+    <span>{{title}}</span>
+</mat-toolbar>
 <app-transfer-details [transfer]="selectedTransfer"></app-transfer-details>
 <app-transfer-list [transfers]="transfers" (onSelect)="onSelect($event)"></app-transfer-list>
