@@ -1,0 +1,60 @@
+<main class="content">
+
+  <h1>FilesFromYou</h1>
+
+  <div *ngIf="clientCreated && !loading">
+    <div class="progress-wrapper" *ngIf="maxVal">
+
+      <div class="text" *ngIf="!isFinished">
+        {{ max - current | number: '1.1-1' }}
+      </div>
+
+      <div class="text" *ngIf="isFinished">
+        Done!
+        <audio src="assets/chime.mp3" autoplay></audio>
+      </div>
+
+      <round-progress [max]="maxVal" [current]="currentVal" [radius]="100" [stroke]="25">
+      </round-progress>
+
+    </div>
+
+    <mat-form-field *ngIf="currentVal <= 0">
+      <input matInput placeholder="File name" [(ngModel)]="transfer.fileName">
+    </mat-form-field>
+    <mat-form-field *ngIf="currentVal <= 0">
+      <input matInput placeholder="File size" [(ngModel)]="transfer.fileSize" type="number">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="currentVal <= 0">
+      <mat-select placeholder="To" [(ngModel)]="selectedClient">
+        <mat-option *ngFor="let cl of clients" [value]="cl">
+          {{ cl.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="controls-wrapper">
+      <button mat-raised-button *ngIf="currentVal <= 0" (click)="start()" [disabled]="selectedClient === undefined || transfer.fileName === '' || transfer.fileSize === undefined">
+        Transfer File
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!clientCreated && !loading">
+    <mat-form-field>
+      <input matInput placeholder="Client name" [(ngModel)]="client.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Client email" [(ngModel)]="client.email">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="onCreate()" [disabled]="client.name === '' || client.email === ''">Create client</button>
+  </div>
+
+  <div class="progress-wrapper">
+    <mat-progress-spinner *ngIf="loading && clients.length === 0" mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+</main>
