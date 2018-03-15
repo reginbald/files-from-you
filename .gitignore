@@ -167,3 +167,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+client-app/client-app-darwin-x64
