@@ -1,6 +1,6 @@
 <mat-card>
   <mat-list *ngIf="transfers.length !== 0">
-    <mat-list-item *ngFor="let transfer of transfers" (click)="select(transfer)">
+    <mat-list-item [class.highlight]="hightlights[i]" *ngFor="let transfer of transfers, let i = index" (click)="select(transfer, i)">
       <mat-icon mat-list-icon>timeline</mat-icon>
       <h4 mat-line>{{transfer.fileName}}</h4>
       <p mat-line> {{transfer.fileSize}} MB</p>

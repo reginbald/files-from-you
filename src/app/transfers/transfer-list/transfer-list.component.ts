@@ -11,13 +11,18 @@ export class TransferListComponent implements OnInit {
   @Input() transfers: Transfer[] = [];
   @Output() onSelect = new EventEmitter<Transfer>();
   selected: Transfer;
+  hightlights: Array<boolean> = [true];
+  pastIndex: number = 0;
 
   constructor() {}
 
   ngOnInit() {}
 
-  select(transfer: Transfer) {
+  select(transfer: Transfer, index: number) {
     this.onSelect.emit(transfer);
+    this.hightlights[this.pastIndex] = false;
+    this.hightlights[index] = true;
+    this.pastIndex = index;
     this.selected = transfer;
   }
 }
