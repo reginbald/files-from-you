@@ -1,2 +1,2 @@
-<app-transfer-details></app-transfer-details>
-<app-transfer-list [transfers]="transfers"></app-transfer-list>
+<app-transfer-details [transfer]="selectedTransfer"></app-transfer-details>
+<app-transfer-list [transfers]="transfers" (onSelect)="onSelect($event)"></app-transfer-list>

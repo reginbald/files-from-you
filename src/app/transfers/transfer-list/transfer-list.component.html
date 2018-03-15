@@ -1,6 +1,6 @@
 <mat-card>
-  <mat-list disableRipple="true">
-    <mat-list-item *ngFor="let transfer of transfers">
+  <mat-list>
+    <mat-list-item *ngFor="let transfer of transfers" (click)="select(transfer)">
       <mat-icon mat-list-icon>timeline</mat-icon>
       <h4 mat-line>{{transfer.fileName}}</h4>
       <p mat-line> {{transfer.fileSize}} MB</p>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Transfer } from './../transfer';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-transfer-details',
@@ -7,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransferDetailsComponent implements OnInit {
   chartColors: String[] = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f'];
+
+  @Input()
+  set transfer(transfer: Transfer) {
+    console.log('Transfer', transfer);
+  }
 
   type = 'line';
   data = {
